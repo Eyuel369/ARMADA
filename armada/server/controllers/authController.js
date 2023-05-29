@@ -46,12 +46,12 @@ exports.register = async (req, res) => {
     await user.save();
     const maxAge = 10*60*60;
     await sendOTP(phone, otp);
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN_SECRET,{ expiresIn: maxAge });
+    // const token = jwt.sign({ userId: user._id }, process.env.JWT_TOKEN_SECRET,{ expiresIn: maxAge });
     
-    res.cookie("jwt", token, {
-      httpOnly: true,
-      maxAge: maxAge * 1000, // 3hrs in ms
-    });
+    // res.cookie("jwt", token, {
+    //   httpOnly: true,
+    //   maxAge: maxAge * 1000, // 3hrs in ms
+    // });
 
     res.status(201).json({ message: 'User registered. OTP sent for verification.', Token: token });
   } catch (error) {

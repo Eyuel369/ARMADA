@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
+    enum: ['Farmer', 'Service Provider', 'Both'],
     required: true
   },
   // refreshTokens: [String]
